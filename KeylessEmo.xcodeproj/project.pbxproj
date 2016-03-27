@@ -14,6 +14,8 @@
 		7B03D3C41CA7201300E0468D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B03D3C31CA7201300E0468D /* Assets.xcassets */; };
 		7B03D3C71CA7201300E0468D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B03D3C51CA7201300E0468D /* LaunchScreen.storyboard */; };
 		7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
+		7B03D3D81CA8988400E0468D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D61CA8988400E0468D /* Fabric.framework */; };
+		7B03D3D91CA8988400E0468D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D71CA8988400E0468D /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		7B03D3C81CA7201300E0468D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B03D3D21CA7552900E0468D /* OneSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSymbol.h; sourceTree = "<group>"; };
 		7B03D3D31CA7552900E0468D /* OneSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSymbol.m; sourceTree = "<group>"; };
+		7B03D3D61CA8988400E0468D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7B03D3D71CA8988400E0468D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B03D3D91CA8988400E0468D /* Crashlytics.framework in Frameworks */,
+				7B03D3D81CA8988400E0468D /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +53,8 @@
 			children = (
 				7B03D3B61CA7201300E0468D /* KeylessEmo */,
 				7B03D3B51CA7201300E0468D /* Products */,
+				7B03D3D61CA8988400E0468D /* Fabric.framework */,
+				7B03D3D71CA8988400E0468D /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +102,7 @@
 				7B03D3B01CA7201300E0468D /* Sources */,
 				7B03D3B11CA7201300E0468D /* Frameworks */,
 				7B03D3B21CA7201300E0468D /* Resources */,
+				7B03D3D51CA8983F00E0468D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -148,6 +157,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B03D3D51CA8983F00E0468D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 554ee819c527e61b838fa4f10f1acab1e7304b92 87196845778a2b350212654d91c8ffb3a199bbc785862a177d9fbaec1d8c4558";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7B03D3B01CA7201300E0468D /* Sources */ = {
@@ -269,6 +294,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = KeylessEmo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo;
@@ -280,6 +309,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = KeylessEmo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo;
