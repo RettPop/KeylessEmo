@@ -1,0 +1,43 @@
+{
+	"symbols": [{
+		"id": "0x1F642",
+		"codes": [128578],
+		"name": {
+			"default": "SLIGHTLY SMILING FACE",
+			"localizations": [{
+				"locale": "",
+				"text": ""
+			}]
+		}
+	}, {
+		"id": "0x1F448",
+		"codes": [128072],
+		"name": {
+			"default": "WHITE LEFT POINTING BACKHAND INDEX, backhand index pointing left",
+			"localizations": [{
+				"locale": "",
+				"text": ""
+			}]
+		}
+	}, {
+		"id": "0x1F448 + 0x1F3FB",
+		"codes": [128072, 127995],
+		"name": {
+			"default": "WHITE LEFT POINTING BACKHAND INDEX, TYPE-1-2",
+			"localizations": [{
+				"locale": "",
+				"text": ""
+			}]
+		}
+	}, {
+		"id": "0x1F44D",
+		"codes": [128077],
+		"name": {
+			"default": "THUMBS UP SIGN, thumbs up",
+			"localizations": [{
+				"locale": "",
+				"text": ""
+			}]
+		}
+	}]
+}
