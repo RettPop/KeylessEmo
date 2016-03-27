@@ -45,9 +45,13 @@ typedef enum : NSUInteger {
     [_tabBar setDelegate:self];
     [_emojiTable setDelegate:self];
     [_emojiTable setDataSource:self];
+    [_selectedSymbols setDelegate:self];
     
     [_selectedSymbols setClearButtonMode:UITextFieldViewModeAlways];
     [self changeTab:TAB_TYPE_GENERAL];
+    
+//    UIView *dummy = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+//    [_selectedSymbols setInputView:dummy];
 }
 
 - (void)didReceiveMemoryWarning {
