@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) IBOutlet UITextField *selectedSymbols;
 @property (strong, nonatomic) IBOutlet UIButton *btnCopy;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
+@property (strong, nonatomic) IBOutlet UIButton *btnDelSymbol;
 
 @property (strong, nonatomic) IBOutlet UITabBarItem *tbitemHistory;
 @property (strong, nonatomic) IBOutlet UITabBarItem *tbitemFavorites;
@@ -47,7 +48,10 @@ typedef enum : NSUInteger {
     [_emojiTable setDataSource:self];
     [_selectedSymbols setDelegate:self];
     
-    [_selectedSymbols setClearButtonMode:UITextFieldViewModeAlways];
+    //[_selectedSymbols setClearButtonMode:UITextFieldViewModeAlways];
+    UIView* dumbView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+    [_selectedSymbols setInputView:dumbView];
+    
     [self changeTab:TAB_TYPE_GENERAL];
 }
 
@@ -71,6 +75,7 @@ typedef enum : NSUInteger {
     _lstHistory = [[NSMutableArray alloc] initWithCapacity:10];
     _lstFavorites = [[NSMutableArray alloc] initWithCapacity:10];
 
+    // read stored History array
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
     NSData *data = [defs objectForKey:@"History"];
     if( data ) {
@@ -78,6 +83,7 @@ typedef enum : NSUInteger {
         [_lstHistory addObjectsFromArray:tmp];
     }
     
+    // read stored Favorites array
     data = [defs objectForKey:@"Favorites"];
     if( data ) {
         NSArray *tmp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -140,6 +146,21 @@ typedef enum : NSUInteger {
         [_emojiTable reloadData];
     }
     
+}
+
+- (IBAction)btnDelSymbolTapped:(id)sender
+{
+    NSString *str = [_selectedSymbols text];
+    if( [str length] > 0 )
+    {
+        // whereas we are operating with UTF-32 (not UTF-16), we have to perform additional movements.
+        // Thanks to http://sapi.me/1Tf0sao article
+        
+        // find last composed characters sequence and extract substring from the beginning of text till start of the sequence
+        NSRange rng = [str rangeOfComposedCharacterSequenceAtIndex:[str length]-1];
+        str = [str substringToIndex:rng.location];
+        [_selectedSymbols setText:str];
+    }
 }
 
 - (IBAction)btnCopyTapped:(id)sender
@@ -282,7 +303,7 @@ typedef enum : NSUInteger {
 #pragma mark UITextField delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    return FALSE;
+    return NO;
 }
 
 -(BOOL)textFieldShouldClear:(UITextField *)textField

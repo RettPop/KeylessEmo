@@ -21,52 +21,71 @@
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="All" id="kYe-wJ-bfv"/>
-                                    <tabBarItem title="History" id="Voi-bq-wFs"/>
+                                    <tabBarItem systemItem="search" id="kYe-wJ-bfv"/>
+                                    <tabBarItem systemItem="history" id="Voi-bq-wFs"/>
                                     <tabBarItem systemItem="favorites" id="Trl-m5-PbT"/>
                                     <tabBarItem systemItem="more" id="8mq-Ld-qtg"/>
                                 </items>
                             </tabBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-kc-KKH">
-                                <rect key="frame" x="0.0" y="587" width="296" height="30"/>
+                                <rect key="frame" x="10" y="549" width="355" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="355" id="hNh-av-efU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkh-V9-bvs">
-                                <rect key="frame" x="304" y="587" width="71" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="dMv-pW-juT"/>
-                                </constraints>
-                                <state key="normal" title="Copy"/>
+                                <rect key="frame" x="10" y="583" width="355" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Copy">
+                                    <color key="titleColor" red="1" green="0.98360129070000002" blue="0.94934152829999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnCopyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Y5-lb-fbF"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ye-F6-ogs">
-                                <rect key="frame" x="0.0" y="20" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ac3-xJ-cMi">
+                                <rect key="frame" x="335" y="547" width="30" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="⌫">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDelSymbolTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ya1-rD-hDn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zbI-kc-KKH" firstAttribute="leading" secondItem="fGF-wh-JfO" secondAttribute="leading" id="111-z4-m4m"/>
-                            <constraint firstItem="lkh-V9-bvs" firstAttribute="leading" secondItem="zbI-kc-KKH" secondAttribute="trailing" constant="8" symbolic="YES" id="5mv-FQ-oKR"/>
+                            <constraint firstItem="ac3-xJ-cMi" firstAttribute="centerY" secondItem="lkh-V9-bvs" secondAttribute="centerY" constant="-34.5" id="3LZ-8I-8gF"/>
+                            <constraint firstItem="fGF-wh-JfO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9hM-SG-vHj"/>
                             <constraint firstAttribute="trailing" secondItem="0Ye-F6-ogs" secondAttribute="trailing" id="CkL-c6-du4"/>
-                            <constraint firstItem="zbI-kc-KKH" firstAttribute="top" secondItem="0Ye-F6-ogs" secondAttribute="bottom" constant="1" id="Idc-V1-TSG"/>
-                            <constraint firstItem="0Ye-F6-ogs" firstAttribute="leading" secondItem="zbI-kc-KKH" secondAttribute="leading" id="Wq7-Hm-9bh"/>
+                            <constraint firstItem="fGF-wh-JfO" firstAttribute="trailing" secondItem="0Ye-F6-ogs" secondAttribute="trailing" id="KuP-77-wmd"/>
+                            <constraint firstItem="ac3-xJ-cMi" firstAttribute="leading" secondItem="zbI-kc-KKH" secondAttribute="trailing" constant="-30" id="Oc9-PW-7iw"/>
+                            <constraint firstItem="zbI-kc-KKH" firstAttribute="top" secondItem="0Ye-F6-ogs" secondAttribute="bottom" constant="8" id="PgG-9Z-KP4"/>
+                            <constraint firstItem="fGF-wh-JfO" firstAttribute="top" secondItem="lkh-V9-bvs" secondAttribute="bottom" constant="5" id="YKN-hk-j4j"/>
                             <constraint firstItem="0Ye-F6-ogs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YlR-8X-1SS"/>
-                            <constraint firstItem="zbI-kc-KKH" firstAttribute="top" secondItem="lkh-V9-bvs" secondAttribute="top" id="Z4h-4Q-HEB"/>
                             <constraint firstItem="0Ye-F6-ogs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZTC-t5-JpZ"/>
-                            <constraint firstItem="lkh-V9-bvs" firstAttribute="trailing" secondItem="fGF-wh-JfO" secondAttribute="trailing" id="ZdP-8f-3UK"/>
-                            <constraint firstItem="fGF-wh-JfO" firstAttribute="top" secondItem="zbI-kc-KKH" secondAttribute="bottom" constant="1" id="f2P-hQ-dMX"/>
-                            <constraint firstItem="0Ye-F6-ogs" firstAttribute="trailing" secondItem="lkh-V9-bvs" secondAttribute="trailing" id="qeY-lt-Fdo"/>
-                            <constraint firstItem="fGF-wh-JfO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rIg-Ru-NIR"/>
+                            <constraint firstItem="fGF-wh-JfO" firstAttribute="centerX" secondItem="lkh-V9-bvs" secondAttribute="centerX" id="agU-dS-eNf"/>
+                            <constraint firstItem="ac3-xJ-cMi" firstAttribute="trailing" secondItem="lkh-V9-bvs" secondAttribute="trailing" id="euV-Yr-IfN"/>
+                            <constraint firstItem="zbI-kc-KKH" firstAttribute="centerY" secondItem="ac3-xJ-cMi" secondAttribute="centerY" id="iFO-wF-RCe"/>
+                            <constraint firstItem="fGF-wh-JfO" firstAttribute="leading" secondItem="0Ye-F6-ogs" secondAttribute="leading" id="lvP-mz-9kn"/>
+                            <constraint firstItem="0Ye-F6-ogs" firstAttribute="trailing" secondItem="lkh-V9-bvs" secondAttribute="trailing" constant="10" id="qeY-lt-Fdo"/>
+                            <constraint firstItem="zbI-kc-KKH" firstAttribute="trailing" secondItem="lkh-V9-bvs" secondAttribute="trailing" id="sV3-Ot-31X"/>
+                            <constraint firstItem="zbI-kc-KKH" firstAttribute="leading" secondItem="lkh-V9-bvs" secondAttribute="leading" id="ssI-rC-suW"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btnCopy" destination="lkh-V9-bvs" id="whb-31-kkU"/>
+                        <outlet property="btnDelSymbol" destination="ac3-xJ-cMi" id="hJh-jj-tPj"/>
                         <outlet property="emojiTable" destination="0Ye-F6-ogs" id="mTC-v2-HBa"/>
                         <outlet property="selectedSymbols" destination="zbI-kc-KKH" id="tl9-Sp-gMX"/>
                         <outlet property="tabBar" destination="fGF-wh-JfO" id="IyU-c0-cpD"/>
