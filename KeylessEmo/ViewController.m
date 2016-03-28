@@ -49,9 +49,6 @@ typedef enum : NSUInteger {
     
     [_selectedSymbols setClearButtonMode:UITextFieldViewModeAlways];
     [self changeTab:TAB_TYPE_GENERAL];
-    
-//    UIView *dummy = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-//    [_selectedSymbols setInputView:dummy];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,6 +90,7 @@ typedef enum : NSUInteger {
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_lstHistory];
     [defs setObject:data forKey:@"History"];
+    //[defs removeObjectForKey:@"History"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:_lstFavorites];
     [defs setObject:data forKey:@"Favorites"];
@@ -157,24 +155,61 @@ typedef enum : NSUInteger {
     
     // save to history
     OneSymbol *newSymb = [[OneSymbol alloc] initWithName:_selectedSymbols.text presentation:_selectedSymbols.text];
+    OneSymbol *existingSymbol = nil;
 
     // look through history for presentation that is copied.
-    // May be make more convenient
+    // May be make more beauty
     for (OneSymbol *oneSymbol in _lstHistory)
     {
+        // found that entered emoji already is in history
         if( [[oneSymbol presentation] isEqualToString:[newSymb presentation]] )
         {
-            // move found image to beginning
-            [_lstHistory removeObject:oneSymbol];
+            existingSymbol = oneSymbol;
             break;
         }
     }
     
-    // text was not found in history. saving it
-    [_lstHistory insertObject:newSymb atIndex:0];
-    
-    if( TAB_TYPE_HISTORY == [self currentTabType]){
-        [_emojiTable reloadData];
+    // move found symbol to beginning of table if it is not yet.
+    // if we are in Hystory tab, perform visual animation
+    if( TAB_TYPE_HISTORY == [self currentTabType] )
+    {
+        if( existingSymbol )
+        {
+            // if found element is not first — need to reorder. Else do nothing — already first
+            if( existingSymbol != [_lstHistory firstObject] )
+            {
+                [_emojiTable beginUpdates];
+                NSIndexPath *srcPath = [NSIndexPath indexPathForRow:[_lstHistory indexOfObject:existingSymbol] inSection:0];
+                NSIndexPath *dstPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                [_emojiTable insertRowsAtIndexPaths:@[dstPath] withRowAnimation:UITableViewRowAnimationLeft];
+                [_emojiTable deleteRowsAtIndexPaths:@[srcPath] withRowAnimation:UITableViewRowAnimationFade];
+                [_lstHistory removeObject:existingSymbol];
+                [_lstHistory insertObject:newSymb atIndex:0];
+                [_emojiTable endUpdates];
+            }
+        }
+        else // no existing — only need to add new item
+        {
+            [_emojiTable beginUpdates];
+            NSIndexPath *dstPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [_emojiTable insertRowsAtIndexPaths:@[dstPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [_lstHistory insertObject:newSymb atIndex:0];
+            [_emojiTable endUpdates];
+        }
+    }
+    else
+    {
+        //in other tabs perform sorting silently
+        
+        // if element already exists, reorder it only if it not first
+        BOOL existingIsFirst = (existingSymbol && (0 == [_lstHistory indexOfObject:existingSymbol]));
+        if( existingSymbol && !existingIsFirst ){
+            [_lstHistory removeObject:existingSymbol];
+        }
+        
+        if( !existingIsFirst ) {
+            [_lstHistory insertObject:newSymb atIndex:0];
+        }
     }
     
     [self storeLists];
