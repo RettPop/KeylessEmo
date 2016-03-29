@@ -232,6 +232,47 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark -
+#pragma mark Symbol Helpers
+-(OneSymbol *)favouriteForSymbol:(OneSymbol *)symbol
+{
+    // Just comparing text with all favourited symbols and return one
+    //TODO: Optimize somehow later
+    for (OneSymbol *oneSymbol in _lstFavorites) {
+        if( [oneSymbol.presentation isEqualToString:[symbol presentation]] ){
+            return oneSymbol;
+        }
+    }
+    
+    return nil;
+}
+
+-(void)addToFavourites:(OneSymbol *)symbol inCell:(UITableViewCell *)cell
+{
+    [_lstFavorites insertObject:symbol atIndex:0];
+    if( cell ) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.5f];
+        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+        [UIView commitAnimations];
+    }
+    
+    [self storeLists];
+}
+
+-(void)removeFromFavourites:(OneSymbol *)symbol inCell:(UITableViewCell *)cell
+{
+    [_lstFavorites removeObject:symbol];
+    if( cell ) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.5f];
+        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+        [UIView commitAnimations];
+    }
+    
+    [self storeLists];
+}
+
+#pragma mark -
 #pragma mark UITableView delegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -254,24 +295,101 @@ typedef enum : NSUInteger {
         newCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     
+    
     OneSymbol *oneSymbol = [_lstCurrent objectAtIndex:[indexPath row]];
     [[newCell textLabel] setText:[oneSymbol presentation]];
     
-    if( TAB_TYPE_GENERAL == [self currentTabType] ) {
-        [[newCell detailTextLabel] setText:[oneSymbol name]];
-    }
-    else {
-        [[newCell detailTextLabel] setText:@""];
+    switch ([self currentTabType]) {
+        case TAB_TYPE_GENERAL:
+        {
+            // For general list displaying both name and presentation. For others — only presentation part.
+            [[newCell detailTextLabel] setText:[oneSymbol name]];
+            // if this symbol was favorited, make it marked
+            
+            //TODO: make cell marking more mimimi
+            if( [self favouriteForSymbol:oneSymbol] ) {
+                [newCell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+            }
+            else {
+                [newCell setAccessoryType:UITableViewCellAccessoryDetailButton];
+            }
+            break;
+        }
+        case TAB_TYPE_HISTORY:
+        {
+            // History table has favoriting feature but has no symbols name
+            if( [self favouriteForSymbol:oneSymbol] ) {
+                [newCell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+            }
+            else {
+                [newCell setAccessoryType:UITableViewCellAccessoryDetailButton];
+            }
+
+            [[newCell detailTextLabel] setText:@""];
+            break;
+        }
+        default:
+        {
+            [newCell setAccessoryType:UITableViewCellAccessoryNone];
+            [[newCell detailTextLabel] setText:@""];
+            break;
+        }
     }
     
     return newCell;
 }
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    OneSymbol *fav = [self favouriteForSymbol:[_lstCurrent objectAtIndex:indexPath.row]];
+    if( fav ){
+        [self removeFromFavourites:fav inCell:[tableView cellForRowAtIndexPath:indexPath]];
+    }
+    else {
+        [self addToFavourites:[_lstCurrent objectAtIndex:indexPath.row] inCell:[tableView cellForRowAtIndexPath:indexPath]];
+    }
+}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OneSymbol *newSymbol = [_lstCurrent objectAtIndex:indexPath.row];
     [_selectedSymbols setText:[[_selectedSymbols text] stringByAppendingString:[newSymbol presentation]]];
 }
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (   TAB_TYPE_HISTORY == [self currentTabType]
+            || TAB_TYPE_FAVORITES == [self currentTabType] );
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    if( editingStyle == UITableViewCellEditingStyleDelete )
+    {
+        // theoretically we can not gain here while not History or Favorites table is active due canEditRowAtIndexPath condition
+        NSMutableArray *targetArr = _lstHistory;
+        if( TAB_TYPE_FAVORITES == [self currentTabType] ) {
+            targetArr = _lstFavorites;
+        }
+        [targetArr removeObjectAtIndex:indexPath.row];
+        [_emojiTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+// Will be needed if other then Delete action will be added
+//- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
+//                  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewRowAction* delBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+//                                                                      title:@"Delete"
+//                                                                    handler: ^(UITableViewRowAction *action, NSIndexPath *indexPath)
+//    {
+//        [_emojiTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }];
+//    
+//    return @[delBtn];
+//}
 
 #pragma mark -
 #pragma mark UITabBar delegate
