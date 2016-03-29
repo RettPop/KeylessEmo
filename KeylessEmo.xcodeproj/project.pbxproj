@@ -16,6 +16,7 @@
 		7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
 		7B03D3D81CA8988400E0468D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D61CA8988400E0468D /* Fabric.framework */; };
 		7B03D3D91CA8988400E0468D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D71CA8988400E0468D /* Crashlytics.framework */; };
+		7BDC65E61CAAAF88008430B7 /* SymbolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65E51CAAAF88008430B7 /* SymbolCell.m */; };
 		7BF164C91CA9F945000FF240 /* SymbolsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF164C81CA9F945000FF240 /* SymbolsCollection.m */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,8 @@
 		7B03D3D31CA7552900E0468D /* OneSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSymbol.m; sourceTree = "<group>"; };
 		7B03D3D61CA8988400E0468D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7B03D3D71CA8988400E0468D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7BDC65E41CAAAF88008430B7 /* SymbolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolCell.h; sourceTree = "<group>"; };
+		7BDC65E51CAAAF88008430B7 /* SymbolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolCell.m; sourceTree = "<group>"; };
 		7BF164C71CA9F945000FF240 /* SymbolsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolsCollection.h; sourceTree = "<group>"; };
 		7BF164C81CA9F945000FF240 /* SymbolsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolsCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +79,8 @@
 				7B03D3BB1CA7201300E0468D /* AppDelegate.m */,
 				7B03D3BD1CA7201300E0468D /* ViewController.h */,
 				7B03D3BE1CA7201300E0468D /* ViewController.m */,
+				7BDC65E41CAAAF88008430B7 /* SymbolCell.h */,
+				7BDC65E51CAAAF88008430B7 /* SymbolCell.m */,
 				7BF164C71CA9F945000FF240 /* SymbolsCollection.h */,
 				7BF164C81CA9F945000FF240 /* SymbolsCollection.m */,
 				7B03D3C01CA7201300E0468D /* Main.storyboard */,
@@ -189,6 +194,7 @@
 				7B03D3BC1CA7201300E0468D /* AppDelegate.m in Sources */,
 				7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */,
 				7B03D3B91CA7201300E0468D /* main.m in Sources */,
+				7BDC65E61CAAAF88008430B7 /* SymbolCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "OneSymbol.h"
 #import "SymbolsCollection.h"
+#import "SymbolCell.h"
 
 typedef enum : NSUInteger {
     TAB_TYPE_GENERAL = 1,
@@ -246,27 +247,23 @@ typedef enum : NSUInteger {
     return nil;
 }
 
--(void)addToFavourites:(OneSymbol *)symbol inCell:(UITableViewCell *)cell
+-(void)addToFavourites:(OneSymbol *)symbol inCell:(SymbolCell *)cell
 {
     [_lstFavorites insertObject:symbol atIndex:0];
     if( cell ) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.5f];
-        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-        [UIView commitAnimations];
+        [cell setStarred:YES];
+        [_emojiTable reloadRowsAtIndexPaths:@[[cell indexPath]] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     [self storeLists];
 }
 
--(void)removeFromFavourites:(OneSymbol *)symbol inCell:(UITableViewCell *)cell
+-(void)removeFromFavourites:(OneSymbol *)symbol inCell:(SymbolCell *)cell
 {
     [_lstFavorites removeObject:symbol];
     if( cell ) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.5f];
-        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
-        [UIView commitAnimations];
+        [cell setStarred:NO];
+        [_emojiTable reloadRowsAtIndexPaths:@[[cell indexPath]] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     [self storeLists];
@@ -288,50 +285,44 @@ typedef enum : NSUInteger {
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellID = @"default cell";
-    UITableViewCell *newCell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    NSString *cellID = @"SymbolCell";
+    SymbolCell *newCell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if( nil == newCell )
     {
-        newCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        newCell = [[SymbolCell alloc] init];
     }
     
     
     OneSymbol *oneSymbol = [_lstCurrent objectAtIndex:[indexPath row]];
-    [[newCell textLabel] setText:[oneSymbol presentation]];
+    //[[newCell textLabel] setText:[oneSymbol presentation]];
+    [newCell setSymbol:[oneSymbol presentation]];
+    [newCell setTableView:tableView];
+    [newCell setIndexPath:indexPath];
     
     switch ([self currentTabType]) {
         case TAB_TYPE_GENERAL:
         {
             // For general list displaying both name and presentation. For others — only presentation part.
-            [[newCell detailTextLabel] setText:[oneSymbol name]];
+            [newCell setName:[oneSymbol name]];
+
             // if this symbol was favorited, make it marked
-            
-            //TODO: make cell marking more mimimi
-            if( [self favouriteForSymbol:oneSymbol] ) {
-                [newCell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-            }
-            else {
-                [newCell setAccessoryType:UITableViewCellAccessoryDetailButton];
-            }
+            [newCell setHandlesStarTap:YES];
+            [newCell setStarred:(nil != [self favouriteForSymbol:oneSymbol])];
             break;
         }
         case TAB_TYPE_HISTORY:
         {
             // History table has favoriting feature but has no symbols name
-            if( [self favouriteForSymbol:oneSymbol] ) {
-                [newCell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-            }
-            else {
-                [newCell setAccessoryType:UITableViewCellAccessoryDetailButton];
-            }
+            [newCell setHandlesStarTap:YES];
+            [newCell setStarred:(nil != [self favouriteForSymbol:oneSymbol])];
 
-            [[newCell detailTextLabel] setText:@""];
+            [newCell setName:@""];
             break;
         }
         default:
         {
-            [newCell setAccessoryType:UITableViewCellAccessoryNone];
-            [[newCell detailTextLabel] setText:@""];
+            [newCell setHandlesStarTap:NO];
+            [newCell setName:@""];
             break;
         }
     }
