@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "OneSymbol.h"
+#import "SymbolsCollection.h"
 
 typedef enum : NSUInteger {
     TAB_TYPE_GENERAL = 1,
@@ -19,7 +20,7 @@ typedef enum : NSUInteger {
 {
     NSMutableArray * _lstHistory;
     NSMutableArray * _lstFavorites;
-    NSMutableArray * _lstGeneral;
+    NSArray * _lstGeneral;
     NSArray * _lstCurrent;
 }
 @property (strong, nonatomic) IBOutlet UITableView *emojiTable;
@@ -63,15 +64,7 @@ typedef enum : NSUInteger {
 -(void)fillStoredLists
 {
     // loading stored favourites and history from user preferences
-    _lstGeneral = [[NSMutableArray alloc] initWithCapacity:10];
-    
-    [_lstGeneral addObject:[[OneSymbol alloc] initWithName:@"SLIGHTLY SMILING FACE" codes:@[@0x1F642]]];
-    [_lstGeneral addObject:[[OneSymbol alloc] initWithName:@"WHITE LEFT POINTING BACKHAND INDEX, backhand index pointing left" codes: @[@0x1F448]]];
-    [_lstGeneral addObject:[[OneSymbol alloc] initWithName:@"WHITE LEFT POINTING BACKHAND INDEX, TYPE-1-2" codes:@[@0x1F448, @0x1F3FB]]];
-    [_lstGeneral addObject:[[OneSymbol alloc] initWithName:@"THUMBS UP SIGN, thumbs up" codes:@[@0x1F44D]]];
-    [_lstGeneral addObject:[[OneSymbol alloc] initWithName:@"Family: MAN, WOMAN, BOY" codes:@[@0x1F468, @0x200D, @0x1F469, @0x200D, @0x1F466]]];
-    
-
+    _lstGeneral = [SymbolsCollection symbolsArray];
     _lstHistory = [[NSMutableArray alloc] initWithCapacity:10];
     _lstFavorites = [[NSMutableArray alloc] initWithCapacity:10];
 
