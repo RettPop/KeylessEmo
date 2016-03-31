@@ -1,0 +1,17 @@
+//
+//  KEPrefixHeader.pch
+//  KeylessEmo
+//
+//  Created by Rett Pop on 2016-03-31.
+//  Copyright © 2016 SapiSoft. All rights reserved.
+//
+
+#ifndef KEPrefixHeader_pch
+#define KEPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#include "KEConstants.h"
+
+#endif /* KEPrefixHeader_pch */

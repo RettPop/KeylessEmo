@@ -10,6 +10,8 @@
 #import "OneSymbol.h"
 #import "SymbolsCollection.h"
 #import "SymbolCell.h"
+#import "KEOptionsHelper.h"
+#import "KEConstants.h"
 
 typedef enum : NSUInteger {
     TAB_TYPE_GENERAL = 1,
@@ -94,6 +96,9 @@ typedef enum : NSUInteger {
     
     data = [NSKeyedArchiver archivedDataWithRootObject:_lstFavorites];
     [defs setObject:data forKey:@"Favorites"];
+    
+    [KEOptionsHelper setOptionArrayValue:_lstFavorites forKey:kKeyNameStoredFavorites];
+    [KEOptionsHelper setOptionArrayValue:_lstHistory forKey:kKeyNameStoredHistory];
 }
 
 -(TAB_TYPE)currentTabType

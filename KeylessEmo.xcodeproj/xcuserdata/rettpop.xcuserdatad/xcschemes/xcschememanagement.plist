@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EmoWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>KeylessEmo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>7B03D3B31CA7201300E0468D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BDC65EA1CAB344D008430B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

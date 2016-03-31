@@ -16,9 +16,42 @@
 		7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
 		7B03D3D81CA8988400E0468D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D61CA8988400E0468D /* Fabric.framework */; };
 		7B03D3D91CA8988400E0468D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D71CA8988400E0468D /* Crashlytics.framework */; };
+		7B4F87A61CACA48700DDA01F /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
 		7BDC65E61CAAAF88008430B7 /* SymbolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65E51CAAAF88008430B7 /* SymbolCell.m */; };
+		7BDC65EE1CAB344E008430B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDC65ED1CAB344E008430B7 /* NotificationCenter.framework */; };
+		7BDC65F21CAB344E008430B7 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65F11CAB344E008430B7 /* TodayViewController.m */; };
+		7BDC65F51CAB344E008430B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDC65F31CAB344E008430B7 /* MainInterface.storyboard */; };
+		7BDC65F91CAB344E008430B7 /* EmoWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7BDC65EB1CAB344D008430B7 /* EmoWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7BDC66001CAC7C14008430B7 /* KEOptionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65FF1CAC7C14008430B7 /* KEOptionsHelper.m */; };
+		7BDC66011CAC7C14008430B7 /* KEOptionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65FF1CAC7C14008430B7 /* KEOptionsHelper.m */; };
+		7BDC66071CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */; };
+		7BDC66081CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */; };
 		7BF164C91CA9F945000FF240 /* SymbolsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF164C81CA9F945000FF240 /* SymbolsCollection.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7BDC65F71CAB344E008430B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B03D3AC1CA7201300E0468D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BDC65EA1CAB344D008430B7;
+			remoteInfo = EmoWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7BDC65FD1CAB344E008430B7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7BDC65F91CAB344E008430B7 /* EmoWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B03D3B41CA7201300E0468D /* KeylessEmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeylessEmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +70,20 @@
 		7B03D3D71CA8988400E0468D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7BDC65E41CAAAF88008430B7 /* SymbolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolCell.h; sourceTree = "<group>"; };
 		7BDC65E51CAAAF88008430B7 /* SymbolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolCell.m; sourceTree = "<group>"; };
+		7BDC65EB1CAB344D008430B7 /* EmoWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BDC65ED1CAB344E008430B7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7BDC65F01CAB344E008430B7 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		7BDC65F11CAB344E008430B7 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		7BDC65F41CAB344E008430B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7BDC65F61CAB344E008430B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BDC65FE1CAC7C14008430B7 /* KEOptionsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KEOptionsHelper.h; sourceTree = "<group>"; };
+		7BDC65FF1CAC7C14008430B7 /* KEOptionsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KEOptionsHelper.m; sourceTree = "<group>"; };
+		7BDC66021CAC7C57008430B7 /* KEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KEConstants.h; sourceTree = "<group>"; };
+		7BDC66031CAC7CC3008430B7 /* EmoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EmoWidget.entitlements; sourceTree = "<group>"; };
+		7BDC66041CAC7EBB008430B7 /* KEPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KEPrefixHeader.pch; sourceTree = "<group>"; };
+		7BDC66051CAC89BD008430B7 /* UIView+SSUIViewCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SSUIViewCategory.h"; sourceTree = "<group>"; };
+		7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SSUIViewCategory.m"; sourceTree = "<group>"; };
+		7BDC66091CAC8B1B008430B7 /* KeylessEmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = KeylessEmo.entitlements; sourceTree = "<group>"; };
 		7BF164C71CA9F945000FF240 /* SymbolsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolsCollection.h; sourceTree = "<group>"; };
 		7BF164C81CA9F945000FF240 /* SymbolsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolsCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +98,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7BDC65E81CAB344D008430B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BDC65EE1CAB344E008430B7 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				7B03D3B61CA7201300E0468D /* KeylessEmo */,
+				7BDC65EF1CAB344E008430B7 /* EmoWidget */,
+				7BDC65EC1CAB344E008430B7 /* Frameworks */,
 				7B03D3B51CA7201300E0468D /* Products */,
 				7B03D3D61CA8988400E0468D /* Fabric.framework */,
 				7B03D3D71CA8988400E0468D /* Crashlytics.framework */,
@@ -68,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				7B03D3B41CA7201300E0468D /* KeylessEmo.app */,
+				7BDC65EB1CAB344D008430B7 /* EmoWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +133,9 @@
 		7B03D3B61CA7201300E0468D /* KeylessEmo */ = {
 			isa = PBXGroup;
 			children = (
+				7BDC66091CAC8B1B008430B7 /* KeylessEmo.entitlements */,
+				7BDC66051CAC89BD008430B7 /* UIView+SSUIViewCategory.h */,
+				7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */,
 				7B03D3BA1CA7201300E0468D /* AppDelegate.h */,
 				7B03D3BB1CA7201300E0468D /* AppDelegate.m */,
 				7B03D3BD1CA7201300E0468D /* ViewController.h */,
@@ -90,6 +151,10 @@
 				7B03D3B71CA7201300E0468D /* Supporting Files */,
 				7B03D3D21CA7552900E0468D /* OneSymbol.h */,
 				7B03D3D31CA7552900E0468D /* OneSymbol.m */,
+				7BDC65FE1CAC7C14008430B7 /* KEOptionsHelper.h */,
+				7BDC65FF1CAC7C14008430B7 /* KEOptionsHelper.m */,
+				7BDC66021CAC7C57008430B7 /* KEConstants.h */,
+				7BDC66041CAC7EBB008430B7 /* KEPrefixHeader.pch */,
 			);
 			path = KeylessEmo;
 			sourceTree = "<group>";
@@ -100,6 +165,26 @@
 				7B03D3B81CA7201300E0468D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7BDC65EC1CAB344E008430B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BDC65ED1CAB344E008430B7 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7BDC65EF1CAB344E008430B7 /* EmoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7BDC66031CAC7CC3008430B7 /* EmoWidget.entitlements */,
+				7BDC65F01CAB344E008430B7 /* TodayViewController.h */,
+				7BDC65F11CAB344E008430B7 /* TodayViewController.m */,
+				7BDC65F31CAB344E008430B7 /* MainInterface.storyboard */,
+				7BDC65F61CAB344E008430B7 /* Info.plist */,
+			);
+			path = EmoWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,15 +198,34 @@
 				7B03D3B11CA7201300E0468D /* Frameworks */,
 				7B03D3B21CA7201300E0468D /* Resources */,
 				7B03D3D51CA8983F00E0468D /* ShellScript */,
+				7BDC65FD1CAB344E008430B7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7BDC65F81CAB344E008430B7 /* PBXTargetDependency */,
 			);
 			name = KeylessEmo;
 			productName = KeylessEmo;
 			productReference = 7B03D3B41CA7201300E0468D /* KeylessEmo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7BDC65EA1CAB344D008430B7 /* EmoWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BDC65FA1CAB344E008430B7 /* Build configuration list for PBXNativeTarget "EmoWidget" */;
+			buildPhases = (
+				7BDC65E71CAB344D008430B7 /* Sources */,
+				7BDC65E81CAB344D008430B7 /* Frameworks */,
+				7BDC65E91CAB344D008430B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmoWidget;
+			productName = EmoWidget;
+			productReference = 7BDC65EB1CAB344D008430B7 /* EmoWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -134,6 +238,21 @@
 				TargetAttributes = {
 					7B03D3B31CA7201300E0468D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = AUP6MPX7R6;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					7BDC65EA1CAB344D008430B7 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = AUP6MPX7R6;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -151,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				7B03D3B31CA7201300E0468D /* KeylessEmo */,
+				7BDC65EA1CAB344D008430B7 /* EmoWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -163,6 +283,14 @@
 				7B03D3C71CA7201300E0468D /* LaunchScreen.storyboard in Resources */,
 				7B03D3C41CA7201300E0468D /* Assets.xcassets in Resources */,
 				7B03D3C21CA7201300E0468D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BDC65E91CAB344D008430B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BDC65F51CAB344E008430B7 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,15 +318,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B03D3BF1CA7201300E0468D /* ViewController.m in Sources */,
+				7BDC66001CAC7C14008430B7 /* KEOptionsHelper.m in Sources */,
 				7BF164C91CA9F945000FF240 /* SymbolsCollection.m in Sources */,
 				7B03D3BC1CA7201300E0468D /* AppDelegate.m in Sources */,
 				7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */,
+				7BDC66071CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */,
 				7B03D3B91CA7201300E0468D /* main.m in Sources */,
 				7BDC65E61CAAAF88008430B7 /* SymbolCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7BDC65E71CAB344D008430B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4F87A61CACA48700DDA01F /* OneSymbol.m in Sources */,
+				7BDC66011CAC7C14008430B7 /* KEOptionsHelper.m in Sources */,
+				7BDC66081CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */,
+				7BDC65F21CAB344E008430B7 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7BDC65F81CAB344E008430B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BDC65EA1CAB344D008430B7 /* EmoWidget */;
+			targetProxy = 7BDC65F71CAB344E008430B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7B03D3C01CA7201300E0468D /* Main.storyboard */ = {
@@ -215,6 +364,14 @@
 				7B03D3C61CA7201300E0468D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7BDC65F31CAB344E008430B7 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BDC65F41CAB344E008430B7 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -306,6 +463,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeylessEmo/KeylessEmo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -321,6 +480,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeylessEmo/KeylessEmo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -329,6 +490,32 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7BDC65FB1CAB344E008430B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EmoWidget/EmoWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = EmoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo.EmoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7BDC65FC1CAB344E008430B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EmoWidget/EmoWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = EmoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo.EmoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -349,6 +536,15 @@
 			buildConfigurations = (
 				7B03D3CC1CA7201300E0468D /* Debug */,
 				7B03D3CD1CA7201300E0468D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BDC65FA1CAB344E008430B7 /* Build configuration list for PBXNativeTarget "EmoWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BDC65FB1CAB344E008430B7 /* Debug */,
+				7BDC65FC1CAB344E008430B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
