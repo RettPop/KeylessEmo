@@ -27,6 +27,8 @@
 		7BDC66071CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */; };
 		7BDC66081CAC89BD008430B7 /* UIView+SSUIViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */; };
 		7BF164C91CA9F945000FF240 /* SymbolsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF164C81CA9F945000FF240 /* SymbolsCollection.m */; };
+		7BFBE27F1CB4F60600E2550C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7BFBE2821CB4F60600E2550C /* Localizable.strings */; };
+		7BFBE2801CB4F60600E2550C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7BFBE2821CB4F60600E2550C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		7BDC66091CAC8B1B008430B7 /* KeylessEmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = KeylessEmo.entitlements; sourceTree = "<group>"; };
 		7BF164C71CA9F945000FF240 /* SymbolsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolsCollection.h; sourceTree = "<group>"; };
 		7BF164C81CA9F945000FF240 /* SymbolsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolsCollection.m; sourceTree = "<group>"; };
+		7BFBE2841CB4F63400E2550C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7BFBE2851CB4F7AF00E2550C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 				7BDC65FF1CAC7C14008430B7 /* KEOptionsHelper.m */,
 				7BDC66021CAC7C57008430B7 /* KEConstants.h */,
 				7BDC66041CAC7EBB008430B7 /* KEPrefixHeader.pch */,
+				7BFBE2821CB4F60600E2550C /* Localizable.strings */,
 			);
 			path = KeylessEmo;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7B03D3AB1CA7201300E0468D;
 			productRefGroup = 7B03D3B51CA7201300E0468D /* Products */;
@@ -281,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B03D3C71CA7201300E0468D /* LaunchScreen.storyboard in Resources */,
+				7BFBE27F1CB4F60600E2550C /* Localizable.strings in Resources */,
 				7B03D3C41CA7201300E0468D /* Assets.xcassets in Resources */,
 				7B03D3C21CA7201300E0468D /* Main.storyboard in Resources */,
 			);
@@ -291,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BDC65F51CAB344E008430B7 /* MainInterface.storyboard in Resources */,
+				7BFBE2801CB4F60600E2550C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +380,15 @@
 				7BDC65F41CAB344E008430B7 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		7BFBE2821CB4F60600E2550C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BFBE2841CB4F63400E2550C /* en */,
+				7BFBE2851CB4F7AF00E2550C /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  KeylessEmo
+
+  Created by Rett Pop on 2016-04-06.
+  Copyright © 2016 SapiSoft. All rights reserved.
+*/
+
+"button.Title.OpenHostApp" = "Open application";

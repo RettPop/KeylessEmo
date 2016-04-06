@@ -12,6 +12,7 @@
 #import "SymbolCell.h"
 #import "KEOptionsHelper.h"
 #import "KEConstants.h"
+#import "UIView+SSUIViewCategory.h"
 
 typedef enum : NSUInteger {
     TAB_TYPE_GENERAL = 1,
@@ -27,7 +28,7 @@ typedef enum : NSUInteger {
     NSArray * _lstCurrent;
 }
 @property (strong, nonatomic) IBOutlet UITableView *emojiTable;
-@property (strong, nonatomic) IBOutlet UITextField *selectedSymbols;
+@property (strong, nonatomic) IBOutlet UITextView *selectedSymbols;
 @property (strong, nonatomic) IBOutlet UIButton *btnCopy;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 @property (strong, nonatomic) IBOutlet UIButton *btnDelSymbol;
@@ -50,13 +51,10 @@ typedef enum : NSUInteger {
     [_tabBar setDelegate:self];
     [_emojiTable setDelegate:self];
     [_emojiTable setDataSource:self];
-    [_selectedSymbols setDelegate:self];
-    
-    //[_selectedSymbols setClearButtonMode:UITextFieldViewModeAlways];
-    UIView* dumbView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    [_selectedSymbols setInputView:dumbView];
     
     [self changeTab:TAB_TYPE_GENERAL];
+    
+    [_selectedSymbols borderWithColor:[_btnCopy backgroundColor] borderWidth:.5f];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,7 +156,7 @@ typedef enum : NSUInteger {
         // find last composed characters sequence and extract substring from the beginning of text till start of the sequence
         NSRange rng = [str rangeOfComposedCharacterSequenceAtIndex:[str length]-1];
         str = [str substringToIndex:rng.location];
-        [_selectedSymbols setText:str];
+        [self showSelectedSymbols: str];
     }
 }
 
@@ -274,6 +272,16 @@ typedef enum : NSUInteger {
     [self storeLists];
 }
 
+-(void)showSelectedSymbols:(NSString *) symbols
+{
+    // Due Xcode bug UITextView drops font setting on setText message if isSelectable is NO. So, hack it.
+    // https://stackoverflow.com/questions/19049917/uitextview-font-is-being-reset-after-settext
+    BOOL isSelected = [_selectedSymbols isSelectable];
+    [_selectedSymbols setSelectable:YES];
+    [_selectedSymbols setText:symbols];
+    [_selectedSymbols setSelectable:isSelected];
+}
+
 #pragma mark -
 #pragma mark UITableView delegate
 
@@ -350,7 +358,7 @@ typedef enum : NSUInteger {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OneSymbol *newSymbol = [_lstCurrent objectAtIndex:indexPath.row];
-    [_selectedSymbols setText:[[_selectedSymbols text] stringByAppendingString:[newSymbol presentation]]];
+    [self showSelectedSymbols: [[_selectedSymbols text] stringByAppendingString:[newSymbol presentation]]];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -62,16 +62,17 @@
         }
     }
 
-    DLog(@"_lstHistory has %lu records", [_lstHistory count]);
-    DLog(@"_lstFavorites has %lu records", (unsigned long)[_lstFavorites count]);
     _lstGeneral = [NSMutableArray arrayWithCapacity:[_lstHistory count] + [_lstFavorites count] + 1]; //+ launch app button
     
     // adding button to switch to hosting app — first button in list
     NSUInteger position = 0;
     _btnOpenHostApp = [self createButtonWithTitle:LOC(@"button.Title.OpenHostApp") action:@selector(btnOpenHostAppTapped:) onPosition:position++];
+    [[_btnOpenHostApp titleLabel] setTextColor:[UIColor whiteColor]];
+    
     [_lstGeneral addObject:_btnOpenHostApp];
     [[self view] addSubview:_btnOpenHostApp];
 
+    // add buttons with symbols from history and favorites
     for( NSArray *oneArray in @[_lstHistory, _lstFavorites] )
     {
         for (OneSymbol *oneSymbol in oneArray)
