@@ -537,7 +537,8 @@ typedef enum : NSUInteger {
     }
     
     [collCell setStarActivity:!fav];
-    [_emojiGrid reloadData];
+    [_emojiGrid reloadItemsAtIndexPaths:@[indexPath]];
+    //[_emojiGrid reloadData];
 }
 
 #pragma mark <UISearchBarDelegate>
