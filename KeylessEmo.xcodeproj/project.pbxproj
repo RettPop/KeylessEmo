@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		7B03D3B91CA7201300E0468D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3B81CA7201300E0468D /* main.m */; };
 		7B03D3BC1CA7201300E0468D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3BB1CA7201300E0468D /* AppDelegate.m */; };
-		7B03D3BF1CA7201300E0468D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3BE1CA7201300E0468D /* ViewController.m */; };
+		7B03D3BF1CA7201300E0468D /* EmojiListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3BE1CA7201300E0468D /* EmojiListVC.m */; };
 		7B03D3C21CA7201300E0468D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B03D3C01CA7201300E0468D /* Main.storyboard */; };
 		7B03D3C41CA7201300E0468D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B03D3C31CA7201300E0468D /* Assets.xcassets */; };
 		7B03D3C71CA7201300E0468D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B03D3C51CA7201300E0468D /* LaunchScreen.storyboard */; };
 		7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
 		7B03D3D81CA8988400E0468D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D61CA8988400E0468D /* Fabric.framework */; };
 		7B03D3D91CA8988400E0468D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B03D3D71CA8988400E0468D /* Crashlytics.framework */; };
+		7B3A4CC21D8FF8B600DEA902 /* CollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A4CC11D8FF8B600DEA902 /* CollectionCellView.m */; };
 		7B4F87A61CACA48700DDA01F /* OneSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B03D3D31CA7552900E0468D /* OneSymbol.m */; };
 		7BDC65E61CAAAF88008430B7 /* SymbolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC65E51CAAAF88008430B7 /* SymbolCell.m */; };
 		7BDC65EE1CAB344E008430B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDC65ED1CAB344E008430B7 /* NotificationCenter.framework */; };
@@ -60,8 +61,8 @@
 		7B03D3B81CA7201300E0468D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7B03D3BA1CA7201300E0468D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7B03D3BB1CA7201300E0468D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7B03D3BD1CA7201300E0468D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7B03D3BE1CA7201300E0468D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7B03D3BD1CA7201300E0468D /* EmojiListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiListVC.h; sourceTree = "<group>"; };
+		7B03D3BE1CA7201300E0468D /* EmojiListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiListVC.m; sourceTree = "<group>"; };
 		7B03D3C11CA7201300E0468D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B03D3C31CA7201300E0468D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B03D3C61CA7201300E0468D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,6 +71,8 @@
 		7B03D3D31CA7552900E0468D /* OneSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSymbol.m; sourceTree = "<group>"; };
 		7B03D3D61CA8988400E0468D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7B03D3D71CA8988400E0468D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7B3A4CC01D8FF8B600DEA902 /* CollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCellView.h; sourceTree = "<group>"; };
+		7B3A4CC11D8FF8B600DEA902 /* CollectionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCellView.m; sourceTree = "<group>"; };
 		7BDC65E41CAAAF88008430B7 /* SymbolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolCell.h; sourceTree = "<group>"; };
 		7BDC65E51CAAAF88008430B7 /* SymbolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolCell.m; sourceTree = "<group>"; };
 		7BDC65EB1CAB344D008430B7 /* EmoWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,8 +145,10 @@
 				7BDC66061CAC89BD008430B7 /* UIView+SSUIViewCategory.m */,
 				7B03D3BA1CA7201300E0468D /* AppDelegate.h */,
 				7B03D3BB1CA7201300E0468D /* AppDelegate.m */,
-				7B03D3BD1CA7201300E0468D /* ViewController.h */,
-				7B03D3BE1CA7201300E0468D /* ViewController.m */,
+				7B03D3BD1CA7201300E0468D /* EmojiListVC.h */,
+				7B03D3BE1CA7201300E0468D /* EmojiListVC.m */,
+				7B3A4CC01D8FF8B600DEA902 /* CollectionCellView.h */,
+				7B3A4CC11D8FF8B600DEA902 /* CollectionCellView.m */,
 				7BDC65E41CAAAF88008430B7 /* SymbolCell.h */,
 				7BDC65E51CAAAF88008430B7 /* SymbolCell.m */,
 				7BF164C71CA9F945000FF240 /* SymbolsCollection.h */,
@@ -325,8 +330,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B03D3BF1CA7201300E0468D /* ViewController.m in Sources */,
+				7B03D3BF1CA7201300E0468D /* EmojiListVC.m in Sources */,
 				7BDC66001CAC7C14008430B7 /* KEOptionsHelper.m in Sources */,
+				7B3A4CC21D8FF8B600DEA902 /* CollectionCellView.m in Sources */,
 				7BF164C91CA9F945000FF240 /* SymbolsCollection.m in Sources */,
 				7B03D3BC1CA7201300E0468D /* AppDelegate.m in Sources */,
 				7B03D3D41CA7552900E0468D /* OneSymbol.m in Sources */,

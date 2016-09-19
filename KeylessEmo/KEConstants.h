@@ -34,8 +34,10 @@
 
 #define kAppGroupName @"group.com.sapisoft.KeyelessEmo"
 
-
 #define NSSTring NSString
+
+#define kColorActiveStar [UIColor colorWithRed:0xF0/255.f green:0xCC/255.f blue:0x00/255.f alpha:1.f]
+#define kColorInactiveStar [UIColor lightGrayColor]
 
 
 #endif /* KEConstants_h */

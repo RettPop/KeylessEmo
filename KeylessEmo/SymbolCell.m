@@ -8,9 +8,7 @@
 
 #import "SymbolCell.h"
 #import "UIView+SSUIViewCategory.h"
-
-#define kColorActiveStar [UIColor colorWithRed:0xF0/255.f green:0xCC/255.f blue:0x00/255.f alpha:1.f]
-#define kColorInactiveStar [UIColor lightGrayColor]
+#include "KEConstants.h"
 
 @interface SymbolCell()
 {
