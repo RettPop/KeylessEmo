@@ -13,7 +13,7 @@
 #import "KEOptionsHelper.h"
 #import "KEConstants.h"
 #import "UIView+SSUIViewCategory.h"
-#import "CollectionCellView.h"
+#import "SymbolGridCell.h"
 
 typedef enum : NSUInteger {
     TAB_TYPE_GENERAL = 1,
@@ -21,12 +21,14 @@ typedef enum : NSUInteger {
     TAB_TYPE_FAVORITES,
 } TAB_TYPE;
 
-@interface EmojiListVC ()<CollectionCellViewDelegate>
+@interface EmojiListVC ()<SymbolGridCellDelegate, UISearchBarDelegate>
 {
     NSMutableArray * _lstHistory;
     NSMutableArray * _lstFavorites;
     NSArray * _lstGeneral;
+    NSArray * _lstGeneralFull;
     NSArray * _lstCurrent;
+    NSMutableArray *_searchTokens;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *emojiGrid;
 @property (strong, nonatomic) IBOutlet UITableView *emojiTable;
@@ -57,6 +59,7 @@ typedef enum : NSUInteger {
     [self changeTab:TAB_TYPE_GENERAL];
     
     [_selectedSymbols borderWithColor:[_btnCopy backgroundColor] borderWidth:.5f];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +70,9 @@ typedef enum : NSUInteger {
 -(void)fillStoredLists
 {
     // loading stored favourites and history from user preferences
-    _lstGeneral = [SymbolsCollection symbolsArray];
+    _lstGeneralFull = [SymbolsCollection symbolsArray];
+    //TODO: Refactor it to use less memory and beauty sweet nice pusy code.
+    _lstGeneral = [NSArray arrayWithArray:_lstGeneralFull];
     _lstHistory = [[NSMutableArray alloc] initWithCapacity:10];
     _lstFavorites = [[NSMutableArray alloc] initWithCapacity:10];
 
@@ -445,8 +450,8 @@ typedef enum : NSUInteger {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellId = @"GeneragCollectionCell";
-    CollectionCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    NSString *cellId = @"SymbolGridCell";
+    SymbolGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
     OneSymbol *oneSymbol = [_lstCurrent objectAtIndex:[indexPath row]];
     [cell setSymbol:[oneSymbol presentation]];
@@ -485,13 +490,13 @@ typedef enum : NSUInteger {
 
 -(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CollectionCellView *cell = (CollectionCellView *)[collectionView cellForItemAtIndexPath:indexPath];
+    SymbolGridCell *cell = (SymbolGridCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor redColor]];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CollectionCellView *cell = (CollectionCellView *)[collectionView cellForItemAtIndexPath:indexPath];
+    SymbolGridCell *cell = (SymbolGridCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
 }
 
@@ -517,8 +522,8 @@ typedef enum : NSUInteger {
  }
  */
 
-#pragma mark <CollectionCellViewDelegate>
--(void)collectionCellView:(CollectionCellView *)collCell starTappedWithCustomObject:(id)customObject
+#pragma mark <SymbolGridCellDelegate>
+-(void)symbolGridCellView:(SymbolGridCell *)collCell starTappedWithCustomObject:(id)customObject
 {
     NSIndexPath *indexPath = customObject;
     OneSymbol *fav = [self favouriteForSymbol:[_lstCurrent objectAtIndex:indexPath.row]];
@@ -531,6 +536,55 @@ typedef enum : NSUInteger {
     
     [collCell setStarActivity:!fav];
     [_emojiGrid reloadData];
+}
+
+#pragma mark <UISearchBarDelegate>
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if( 0 == [searchText length] )
+    {
+        _lstGeneral = [NSArray arrayWithArray:_lstGeneralFull];
+        [_emojiGrid reloadData];
+        _lstCurrent = _lstGeneral;
+        return;
+    }
+    
+    _searchTokens = [NSMutableArray arrayWithArray:[searchText componentsSeparatedByString:@" "]];
+    
+    NSMutableArray<OneSymbol *> *tmpArr = [NSMutableArray arrayWithCapacity:[_lstGeneralFull count]];
+    
+    [_lstGeneralFull enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        OneSymbol *oneSymbol = obj;
+        NSUInteger matches = 0;
+        for (NSString *oneToken in _searchTokens)
+        {
+            if( [oneToken length] == 0 || [[oneSymbol name] localizedCaseInsensitiveContainsString:oneToken] )
+            {
+                matches++;
+            }
+        }
+        if( matches >= [_searchTokens count] ) {
+            [tmpArr addObject:oneSymbol];
+        }
+    }];
+    
+    _lstGeneral = [NSArray arrayWithArray:tmpArr];
+    _lstCurrent = _lstGeneral;
+    [_emojiGrid reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    _lstGeneral = [NSArray arrayWithArray:_lstGeneralFull];
+    [_emojiGrid reloadData];
+    _lstCurrent = _lstGeneral;
+    [searchBar resignFirstResponder];
 }
 
 @end

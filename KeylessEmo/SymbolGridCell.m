@@ -6,12 +6,12 @@
 //  Copyright © 2016 SapiSoft. All rights reserved.
 //
 
-#import "CollectionCellView.h"
+#import "SymbolGridCell.h"
 #include "KEConstants.h"
 
-@interface CollectionCellView()
+@interface SymbolGridCell()
     @property(weak, nonatomic) id customObject;
-    @property(weak, nonatomic) id<CollectionCellViewDelegate> delegate;
+    @property(weak, nonatomic) id<SymbolGridCellDelegate> delegate;
     @property (nonatomic, strong) IBOutlet UILabel *lblSymbol;
     @property (nonatomic, strong) IBOutlet UIButton *btnStar;
 
@@ -20,12 +20,12 @@
 @end
 
 
-@implementation CollectionCellView
+@implementation SymbolGridCell
 
 - (IBAction)starTapped:(id)sender
 {
-    if( [_delegate respondsToSelector:@selector(collectionCellView:starTappedWithCustomObject:)] ) {
-        [_delegate collectionCellView:self starTappedWithCustomObject:_customObject];
+    if( [_delegate respondsToSelector:@selector(symbolGridCellView:starTappedWithCustomObject:)] ) {
+        [_delegate symbolGridCellView:self starTappedWithCustomObject:_customObject];
     }
 }
 
@@ -34,7 +34,7 @@
     [[_btnStar titleLabel] setTextColor:isActive ? kColorActiveStar:kColorInactiveStar];
 }
 
--(void)setDelegate:(id<CollectionCellViewDelegate>) delegate withCustomObject:(id)custObj
+-(void)setDelegate:(id<SymbolGridCellDelegate>) delegate withCustomObject:(id)custObj
 {
     _delegate = delegate;
     _customObject = custObj;
