@@ -41,6 +41,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) IBOutlet UITabBarItem *tbitemFavorites;
 @property (strong, nonatomic) IBOutlet UITabBarItem *tbitemMore;
 @property (strong, nonatomic) IBOutlet UITabBarItem *tbitemAll;
+@property (strong, nonatomic) IBOutlet UISearchBar* searchBar;
 
 @end
 
@@ -152,6 +153,7 @@ typedef enum : NSUInteger {
     
     [_emojiGrid setHidden:toType != TAB_TYPE_GENERAL];
     [_emojiTable setHidden:![_emojiGrid isHidden]];
+    [_searchBar setHidden:[_emojiGrid isHidden]];
 }
 
 - (IBAction)btnDelSymbolTapped:(id)sender
@@ -585,6 +587,7 @@ typedef enum : NSUInteger {
     [_emojiGrid reloadData];
     _lstCurrent = _lstGeneral;
     [searchBar resignFirstResponder];
+    [searchBar setText:@""];
 }
 
 @end

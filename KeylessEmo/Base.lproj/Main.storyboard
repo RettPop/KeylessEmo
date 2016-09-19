@@ -258,6 +258,7 @@
                         <outlet property="btnDelSymbol" destination="ac3-xJ-cMi" id="hJh-jj-tPj"/>
                         <outlet property="emojiGrid" destination="x5C-58-JzY" id="Y1g-cx-8gX"/>
                         <outlet property="emojiTable" destination="0Ye-F6-ogs" id="mTC-v2-HBa"/>
+                        <outlet property="searchBar" destination="b2F-Yb-KXV" id="fG2-Mk-y1X"/>
                         <outlet property="selectedSymbols" destination="zgw-dv-YT1" id="9s3-W2-dmT"/>
                         <outlet property="tabBar" destination="fGF-wh-JfO" id="IyU-c0-cpD"/>
                         <outlet property="tbitemAll" destination="kYe-wJ-bfv" id="s5D-OI-fbO"/>
