@@ -34,6 +34,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) IBOutlet UITableView *emojiTable;
 @property (strong, nonatomic) IBOutlet UITextView *selectedSymbols;
 @property (strong, nonatomic) IBOutlet UIButton *btnCopy;
+@property (strong, nonatomic) IBOutlet UIButton *btnAddToFavs;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 @property (strong, nonatomic) IBOutlet UIButton *btnDelSymbol;
 
@@ -47,7 +48,8 @@ typedef enum : NSUInteger {
 
 @implementation EmojiListVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -60,7 +62,7 @@ typedef enum : NSUInteger {
     [self changeTab:TAB_TYPE_GENERAL];
     
     [_selectedSymbols borderWithColor:[_btnCopy backgroundColor] borderWidth:.5f];
-    
+    [_btnAddToFavs setTitleColor:kColorInactiveStar forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -168,6 +170,31 @@ typedef enum : NSUInteger {
         NSRange rng = [str rangeOfComposedCharacterSequenceAtIndex:[str length]-1];
         str = [str substringToIndex:rng.location];
         [self showSelectedSymbols: str];
+    }
+}
+
+-(IBAction)btnAddToFavsTapped:(id)sender
+{
+    if ( 0 < _selectedSymbols.text.length )
+    {
+        OneSymbol *oneSymb = [[OneSymbol alloc] initWithName:@"" presentation:_selectedSymbols.text];
+        OneSymbol *fav = [self favouriteForSymbol:oneSymb];
+        if( fav ) {
+            [self removeFromFavourites:fav inCell:nil];
+        }
+        else {
+            [self addToFavourites:oneSymb inCell:nil];
+        }
+
+        [self storeLists];
+        
+        // if we are in favorites, redraw table 
+        if( TAB_TYPE_FAVORITES == [self currentTabType] ) {
+            [_emojiTable reloadData];
+        }
+
+        // to update AddToFavourites button state
+        [self showSelectedSymbols:_selectedSymbols.text];
     }
 }
 
@@ -291,6 +318,15 @@ typedef enum : NSUInteger {
     [_selectedSymbols setSelectable:YES];
     [_selectedSymbols setText:symbols];
     [_selectedSymbols setSelectable:isSelected];
+    
+    OneSymbol *oneSymb = [[OneSymbol alloc] initWithName:@"" presentation:symbols];
+    OneSymbol *fav = [self favouriteForSymbol:oneSymb];
+    if( fav ) {
+        [_btnAddToFavs setTitleColor:kColorActiveStar forState:UIControlStateNormal];
+    }
+    else {
+        [_btnAddToFavs setTitleColor:kColorInactiveStar forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark -
