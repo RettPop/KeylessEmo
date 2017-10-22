@@ -15,8 +15,8 @@
 
 #define kDefBorder 5.f
 #define kDefSpace 5.f
-#define kIconWidth 30.f
-#define kDefButtonHeight 40.f
+#define kIconWidth 20.f
+#define kDefButtonHeight 30.f
 
 
 
@@ -29,7 +29,7 @@
     NSArray *_lstHistory;
     NSMutableArray *_lstGeneral;
     
-    UIButton *_btnOpenHostApp;
+//    UIButton *_btnOpenHostApp;
 }
 @end
 
@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.extensionContext setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
     // Do any additional setup after loading the view from its nib.
 
     _showHistory = [KEOptionsHelper boolValueForKey:kKeyNameShowHistory];
@@ -66,11 +67,11 @@
     
     // adding button to switch to hosting app — first button in list
     NSUInteger position = 0;
-    _btnOpenHostApp = [self createButtonWithTitle:LOC(@"button.Title.OpenHostApp") action:@selector(btnOpenHostAppTapped:) onPosition:position++];
-    [[_btnOpenHostApp titleLabel] setTextColor:[UIColor whiteColor]];
-    
-    [_lstGeneral addObject:_btnOpenHostApp];
-    [[self view] addSubview:_btnOpenHostApp];
+//    _btnOpenHostApp = [self createButtonWithTitle:LOC(@"button.Title.OpenHostApp") action:@selector(btnOpenHostAppTapped:) onPosition:position++];
+//    [[_btnOpenHostApp titleLabel] setTextColor:[UIColor whiteColor]];
+//
+//    [_lstGeneral addObject:_btnOpenHostApp];
+//    [[self view] addSubview:_btnOpenHostApp];
 
     // add buttons with symbols from history and favorites
     for( NSArray *oneArray in @[_lstHistory, _lstFavorites] )
@@ -84,6 +85,20 @@
         }
     }
 
+}
+
+-(void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    if( activeDisplayMode == NCWidgetDisplayModeExpanded )
+    {
+        CGFloat oneButtonSpace = kDefButtonHeight + kDefSpace;
+        oneButtonSpace *= [_lstGeneral count];
+        [self setPreferredContentSize: CGSizeMake(CGRectGetWidth([[self view] bounds]), oneButtonSpace)];
+    }
+    else
+    {
+        [self setPreferredContentSize:maxSize];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +116,7 @@
     completionHandler(NCUpdateResultNewData);
 }
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     CGFloat oneButtonSpace = kDefButtonHeight + kDefSpace;
@@ -108,7 +124,10 @@
     {
         oneButtonSpace *= [_lstGeneral count];
     }
-    [self setPreferredContentSize: CGSizeMake(CGRectGetWidth([[self view] bounds]), oneButtonSpace)];
+    CGSize prefSize = self.preferredContentSize;
+    prefSize.height = oneButtonSpace * 2;
+//    [self setPreferredContentSize: CGSizeMake(CGRectGetWidth([[self view] bounds]), oneButtonSpace)];
+//    [self setPreferredContentSize: prefSize];
 //    [_btnClearClipboard setNewWidth:CGRectGetWidth([[self view] bounds])];
 //    [_btnCopyDateTime setNewWidth:CGRectGetWidth([[self view] bounds])];
 }
