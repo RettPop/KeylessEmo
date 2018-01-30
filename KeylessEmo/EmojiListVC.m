@@ -425,6 +425,7 @@ typedef enum : NSUInteger {
         }
         [targetArr removeObjectAtIndex:indexPath.row];
         [_emojiTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self storeLists];
     }
 }
 

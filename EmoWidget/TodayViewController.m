@@ -17,7 +17,8 @@
 #define kDefSpace 5.f
 #define kIconWidth 20.f
 #define kDefButtonHeight 30.f
-
+#define kHistoryBtnTag 10
+#define kFavoriteBtnTag 20
 
 
 @interface TodayViewController () <NCWidgetProviding>
@@ -27,7 +28,7 @@
     
     NSArray *_lstFavorites;
     NSArray *_lstHistory;
-    NSMutableArray *_lstGeneral;
+    NSMutableArray *_lstButtons;
     
 //    UIButton *_btnOpenHostApp;
 }
@@ -62,29 +63,37 @@
             _lstFavorites = @[];
         }
     }
+    
+    [self createButtonsFrom:_lstHistory andFavorites:_lstFavorites];
+}
 
-    _lstGeneral = [NSMutableArray arrayWithCapacity:[_lstHistory count] + [_lstFavorites count] + 1]; //+ launch app button
+-(void)createButtonsFrom:(NSArray*)history andFavorites:(NSArray *)favorites
+{
+    _lstButtons = [NSMutableArray arrayWithCapacity:[history count] + [favorites count] + 1]; //+ launch app button
     
     // adding button to switch to hosting app — first button in list
     NSUInteger position = 0;
-//    _btnOpenHostApp = [self createButtonWithTitle:LOC(@"button.Title.OpenHostApp") action:@selector(btnOpenHostAppTapped:) onPosition:position++];
-//    [[_btnOpenHostApp titleLabel] setTextColor:[UIColor whiteColor]];
-//
-//    [_lstGeneral addObject:_btnOpenHostApp];
-//    [[self view] addSubview:_btnOpenHostApp];
-
+    //    _btnOpenHostApp = [self createButtonWithTitle:LOC(@"button.Title.OpenHostApp") action:@selector(btnOpenHostAppTapped:) onPosition:position++];
+    //    [[_btnOpenHostApp titleLabel] setTextColor:[UIColor whiteColor]];
+    //
+    //    [_lstGeneral addObject:_btnOpenHostApp];
+    //    [[self view] addSubview:_btnOpenHostApp];
+    
     // add buttons with symbols from history and favorites
-    for( NSArray *oneArray in @[_lstHistory, _lstFavorites] )
+    for( NSArray *oneArray in @[history, favorites] )
     {
+        int btnTag = [oneArray isEqual:history] ? kHistoryBtnTag : kFavoriteBtnTag;
         for (OneSymbol *oneSymbol in oneArray)
         {
-            UIButton *btnSymbol = [self createButtonWithTitle:[oneSymbol presentation] action:@selector(btnCopySymbolTapped:) onPosition:position];
+            UIButton *btnSymbol = [self createButtonWithTitle:[oneSymbol presentation]
+                                                       action:@selector(btnCopySymbolTapped:)
+                                                   onPosition:position];
+            [btnSymbol setTag:btnTag];
             [[self view] addSubview:btnSymbol];
             position++;
-            [_lstGeneral addObject:btnSymbol];
+            [_lstButtons addObject:btnSymbol];
         }
     }
-
 }
 
 -(void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
@@ -92,7 +101,7 @@
     if( activeDisplayMode == NCWidgetDisplayModeExpanded )
     {
         CGFloat oneButtonSpace = kDefButtonHeight + kDefSpace;
-        oneButtonSpace *= [_lstGeneral count];
+        oneButtonSpace *= [_lstButtons count];
         [self setPreferredContentSize: CGSizeMake(CGRectGetWidth([[self view] bounds]), oneButtonSpace)];
     }
     else
@@ -122,7 +131,7 @@
     CGFloat oneButtonSpace = kDefButtonHeight + kDefSpace;
     //if( _showClearCipboard && _showDTLong )
     {
-        oneButtonSpace *= [_lstGeneral count];
+        oneButtonSpace *= [_lstButtons count];
     }
     CGSize prefSize = self.preferredContentSize;
     prefSize.height = oneButtonSpace * 2;
@@ -152,11 +161,48 @@
 - (IBAction)btnCopySymbolTapped:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    //OneSymbol *oneSymbol = [sender valueForKey:kKeyNameStoredSymbol];
+//    OneSymbol *oneSymbol = [sender valueForKey:kKeyNameStoredSymbol];
     //[pb setString:[oneSymbol presentation]];
-    [pb setString:[[sender titleLabel] text]];
+    NSString* presentation = [[sender titleLabel] text];
+    [pb setString:presentation];
+    
+    [self updateHistory:sender];
 }
 
+-(void)updateHistory:(UIButton *)byButton
+{
+    // update only if it was history button
+    if( kFavoriteBtnTag == [byButton tag] ) {
+        return;
+    }
+    
+    NSString* presentation = [[byButton titleLabel] text];
+    NSMutableArray *newHistory = [[NSMutableArray alloc] initWithArray:_lstHistory];
+    for (OneSymbol* oneSymbol in newHistory)
+    {
+        if( [[oneSymbol presentation] isEqualToString:presentation] )
+        {
+            if( [newHistory indexOfObject:oneSymbol] > 0 )
+            {
+                [newHistory removeObject:oneSymbol];
+                [newHistory insertObject:oneSymbol atIndex:0];
+            }
+            break;
+        }
+    }
+    
+    _lstHistory = nil;
+    _lstHistory = newHistory;
+    [KEOptionsHelper setOptionArrayValue:_lstHistory forKey:kKeyNameStoredHistory];
+    
+    for (UIButton* oneBtn in _lstButtons) {
+        [oneBtn removeFromSuperview];
+    }
+    
+    [_lstButtons removeAllObjects];
+    _lstButtons = nil;
+    [self createButtonsFrom:_lstHistory andFavorites:_lstFavorites];
+}
 
 - (IBAction)btnOpenHostAppTapped:(id)sender
 {
