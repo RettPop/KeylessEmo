@@ -249,6 +249,7 @@
 					7B03D3B31CA7201300E0468D = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = AUP6MPX7R6;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -258,6 +259,7 @@
 					7BDC65EA1CAB344D008430B7 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = AUP6MPX7R6;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -506,6 +508,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeylessEmo/KeylessEmo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Zhelobkov (R85NYLVHK8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUP6MPX7R6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,8 +519,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "89c180f4-0511-405d-8ba6-d18dee51d82e";
-				PROVISIONING_PROFILE_SPECIFIER = "Debug KeylessEmo";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -526,6 +530,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeylessEmo/KeylessEmo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Zhelobkov (R85NYLVHK8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUP6MPX7R6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -535,8 +541,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "89c180f4-0511-405d-8ba6-d18dee51d82e";
-				PROVISIONING_PROFILE_SPECIFIER = "Debug KeylessEmo";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -545,11 +551,15 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = EmoWidget/EmoWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Zhelobkov (R85NYLVHK8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = EmoWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo.EmoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b022edf-53b4-4252-881a-cea6c561af8e";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -559,11 +569,15 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = EmoWidget/EmoWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Zhelobkov (R85NYLVHK8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = EmoWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sapisoft.KeylessEmo.EmoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b022edf-53b4-4252-881a-cea6c561af8e";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
