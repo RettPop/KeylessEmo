@@ -597,14 +597,14 @@ typedef enum : NSUInteger {
     {
         OneSymbol *oneSymbol = obj;
         NSUInteger matches = 0;
-        for (NSString *oneToken in _searchTokens)
+        for (NSString *oneToken in self->_searchTokens)
         {
             if( [oneToken length] == 0 || [[oneSymbol name] localizedCaseInsensitiveContainsString:oneToken] )
             {
                 matches++;
             }
         }
-        if( matches >= [_searchTokens count] ) {
+        if( matches >= [self->_searchTokens count] ) {
             [tmpArr addObject:oneSymbol];
         }
     }];
