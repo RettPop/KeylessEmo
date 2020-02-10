@@ -270,7 +270,7 @@
 			};
 			buildConfigurationList = 7B03D3AF1CA7201300E0468D /* Build configuration list for PBXProject "KeylessEmo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
